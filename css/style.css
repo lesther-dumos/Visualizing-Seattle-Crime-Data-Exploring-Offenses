@@ -117,3 +117,56 @@ body {
 .mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
     cursor: unset;
 }
+
+#arrowAnim {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  z-index: 16;
+}
+
+.arrow {
+  width: 5px;
+  height: 5px;
+  border: 5px solid;
+  border-color: rgb(238, 238, 238) transparent transparent rgb(146, 141, 141);
+  transform: rotate(135deg);
+  z-index: 16;
+}
+
+
+.arrowSliding {
+  position: absolute;
+  -webkit-animation: slide 4s linear infinite; 
+          animation: slide 4s linear infinite;
+  left: 300px;
+  top: 330px;
+
+}
+
+.delay1 {
+  -webkit-animation-delay: .1s; 
+    animation-delay: .1s;
+}
+.delay2 {
+  -webkit-animation-delay: .2s; 
+    animation-delay: .2s;
+}
+.delay3 {
+  -webkit-animation-delay: .3s; 
+    animation-delay: .3s;
+}
+
+@-webkit-keyframes slide {
+  0% { opacity: 0; transform: translateX(-15vw); }
+  20% { opacity: 1; transform: translateX(-9vw); }
+  80% { opacity: 1; transform: translateX(9vw); }
+  100% { opacity: 0; transform: translateX(15vw); }
+}
+
+@keyframes slide {
+  0% { opacity: 0; transform: translateX(-4vw); }
+  20% { opacity: 1; transform: translateX(-15px); }
+  80% { opacity: 1; transform: translateX(-15px); }
+  100% { opacity: 0; transform: translateX(-15px); }
+}

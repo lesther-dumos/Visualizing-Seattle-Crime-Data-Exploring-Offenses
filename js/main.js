@@ -107,3 +107,8 @@ reset.addEventListener('click', event => {
         center: [-122.29, 47.62] // starting center
     });
 });
+
+function handleArrowClick() {
+    // Replace 'new-page.html' with the path to your new HTML page
+    window.location.href = 'new-page.html';
+  }
