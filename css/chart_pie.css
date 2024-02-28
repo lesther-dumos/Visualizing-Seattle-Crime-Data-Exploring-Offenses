@@ -1,0 +1,8 @@
+#chart_div {
+    width: 50%;
+    height: 20%;
+    position: absolute;
+    top: 475px;
+    left: -30px;
+    color: white;
+}

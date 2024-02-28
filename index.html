@@ -16,28 +16,31 @@
     <!-- Load d3.js and c3.js -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/chart_pie.css">
+
 
 </head>
 
 <body>
+    <div id="map"></div>
     <div id="mainTitle"> Seattle Crime in 2023 </div>
     <!-- sidebar -->
     <div id="info">
         <div id="title"> Dashboard </div>
+        <hr style="width:50%;text-align:left;margin-left:0">
 
         <span><a href="https://twitter.com/UW" target="_blank"><i class="bi bi-twitter"></i></a></span>
         <span><a href="https://github.com/lesther-dumos/Smart-Dashboard-Crime/tree/main" target="_blank"><i class="bi bi-github"></i></a></span>
         <span id="reset"><a href="#">reset</a></span>
-
         <div id='text-description'></div>
-        <div class='map-overlay' id='features'> </div>
+        <div id="chart_div"></div>
     </div>
 
     <div class='map-overlay' id='legend'></div>
-    <div id="map"></div>
-
 
     <script src="js/main.js"></script>
+    <script src="js/chart_pie.js"></script>
+
 </body>
 
 </html>

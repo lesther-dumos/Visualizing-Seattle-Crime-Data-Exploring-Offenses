@@ -8,7 +8,7 @@ let map = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/light-v9',
     zoom: 10.6, // starting zoom
     minZoom: 1,
-    center: [-122.25, 47.6002614] // starting center
+    center: [-122.29, 47.62] // starting center
 });
 
 async function geojsonFetch() {
@@ -53,7 +53,7 @@ async function geojsonFetch() {
     });
 
     const layers = [
-        '0-599',
+        '0 - 599',
         '600 - 1199',
         '1200 - 1799',
         '1800 - 2399',
@@ -99,3 +99,11 @@ async function geojsonFetch() {
 }
 
 geojsonFetch();
+
+const reset = document.getElementById('reset');
+reset.addEventListener('click', event => {
+    map.flyTo({
+        zoom: 10.6, // starting zoom
+        center: [-122.29, 47.62] // starting center
+    });
+});
