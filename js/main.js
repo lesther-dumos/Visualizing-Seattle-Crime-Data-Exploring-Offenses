@@ -87,6 +87,15 @@ async function geojsonFetch() {
         legend.appendChild(item);
     });
 
+    map.on('mousemove', ({point}) => {
+        const crimeRate = map.queryRenderedFeatures(point, {
+            layers: ['crimeData-layer']
+        });
+        document.getElementById('text-description').innerHTML = crimeRate.length ?
+            `<h3>${crimeRate[0].properties.L_HOOD}</h3><p><strong><em style="color: red;">${crimeRate[0].properties.CrimeCount}</em></strong> Crime Reported</p>` :
+            `<p>Hover over a neighborhood!</p>`;
+    });  
+
 }
 
 geojsonFetch();
