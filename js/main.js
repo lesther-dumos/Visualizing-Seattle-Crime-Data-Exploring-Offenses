@@ -110,5 +110,7 @@ reset.addEventListener('click', event => {
 
 function handleArrowClick() {
     // Replace 'new-page.html' with the path to your new HTML page
-    window.location.href = 'new-page.html';
+    window.location.href = 'chloropleth.html';
   }
+  
+  document.getElementById('arrowAnim').addEventListener('click', handleArrowClick);

@@ -118,13 +118,6 @@ body {
     cursor: unset;
 }
 
-#arrowAnim {
-  width: 15px;
-  height: 15px;
-  display: flex;
-  z-index: 16;
-}
-
 .arrow {
   width: 5px;
   height: 5px;
