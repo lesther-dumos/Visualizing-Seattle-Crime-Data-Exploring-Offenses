@@ -43,6 +43,8 @@
         <div id='text-description'></div>
         <div id="chart_div"></div>
 
+        <div id="view_chlor"> View Chloropleth Map</div>
+
         <div id="arrowAnim">
             <a href="chloropleth.html" class="arrowSliding">
               <div class="arrow"></div>
@@ -292,10 +294,8 @@ function handleArrowClick() {
 
 const reset = document.getElementById('reset');
 reset.addEventListener('click', event => {
-    map.flyTo({
-        zoom: 10.6, // starting zoom
-        center: [-122.29, 47.62] // starting center
-    });
+    // This event will trigger a page refresh
+    location.reload();
 });
 
 </script>

@@ -49,6 +49,27 @@ body {
     font-family: 'Oswald', sans-serif;
   }
 
+  #view_chlor {
+    color: white;
+    z-index: 20;
+    left: 100px;
+    top: 444px;
+    position: absolute;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  #view_dot {
+    color: white;
+    z-index: 20;
+    left: 120px;
+    top: 444px;
+    position: absolute;
+    font-family: 'Oswald', sans-serif;
+  }
+
+
+  
+
   #info {
     z-index: 1;
     position: absolute;
