@@ -16,7 +16,6 @@
     <!-- Load d3.js and c3.js -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/chart_pie.css">
 
 
 </head>
@@ -55,8 +54,67 @@
     <div class='map-overlay' id='legend'></div>
 
     <script src="js/main.js"></script>
-    <script src="js/chart_pie.js"></script>
 
 </body>
 
 </html>
+
+<style>
+.arrow {
+  width: 5px;
+  height: 5px;
+  border: 5px solid;
+  border-color: rgb(238, 238, 238) transparent transparent rgb(146, 141, 141);
+  transform: rotate(135deg);
+  z-index: 16;
+}
+
+
+.arrowSliding {
+  position: absolute;
+  -webkit-animation: slide 4s linear infinite; 
+          animation: slide 4s linear infinite;
+  left: 300px;
+  top: 450px;
+
+}
+
+.delay1 {
+  -webkit-animation-delay: .1s; 
+    animation-delay: .1s;
+}
+.delay2 {
+  -webkit-animation-delay: .2s; 
+    animation-delay: .2s;
+}
+.delay3 {
+  -webkit-animation-delay: .3s; 
+    animation-delay: .3s;
+}
+
+@-webkit-keyframes slide {
+  0% { opacity: 0; transform: translateX(-15vw); }
+  20% { opacity: 1; transform: translateX(-9vw); }
+  80% { opacity: 1; transform: translateX(9vw); }
+  100% { opacity: 0; transform: translateX(15vw); }
+}
+
+@keyframes slide {
+  0% { opacity: 0; transform: translateX(-4vw); }
+  20% { opacity: 1; transform: translateX(-15px); }
+  80% { opacity: 1; transform: translateX(-15px); }
+  100% { opacity: 0; transform: translateX(-15px); }
+}
+
+</style>
+
+<script>
+
+function handleArrowClick() {
+    // Replace 'new-page.html' with the path to your new HTML page
+    window.location.href = 'dot_density.html';
+  }
+  
+  document.getElementById('arrowAnim').addEventListener('click', handleArrowClick);
+
+</script>
