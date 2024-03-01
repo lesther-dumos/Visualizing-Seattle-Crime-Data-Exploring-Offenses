@@ -1,7 +1,7 @@
 # Visualizing-Seattle-Crime-Data-Exploring-Offenses 
 AA2 Project - Members: Lesther, Chris, Rino, Priscilla, Luu
 
-- Interactive map: [Link](https://lesther-dumos.github.io/Visualizing-Seattle-Crime-Data-Exploring-Offenses/)
+Interactive map: [Link](https://lesther-dumos.github.io/Visualizing-Seattle-Crime-Data-Exploring-Offenses/)
 
 ## Proposal
 
