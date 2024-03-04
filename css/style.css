@@ -67,9 +67,6 @@ body {
     font-family: 'Oswald', sans-serif;
   }
 
-
-  
-
   #info {
     z-index: 2;
     position: absolute;
@@ -195,8 +192,8 @@ background-color: #9b9898;
   height: 40px;
   cursor: pointer;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .info-icon svg {

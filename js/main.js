@@ -11,28 +11,28 @@ let map = new mapboxgl.Map({
     center: [-122.29, 47.62] // starting center
 });
 
-function toggleAboutPage() {
-    var aboutPage = document.getElementById("aboutPage");
+const toggleAboutPage = () => {
+    const aboutPage = document.getElementById("aboutPage");
     aboutPage.style.display === "none" ? aboutPage.style.display = "block" : aboutPage.style.display = "none";
-}
+};
 
-function showAboutPage() {
-    var aboutPage = document.getElementById("aboutPage");
+const showAboutPage = () => {
+    const aboutPage = document.getElementById("aboutPage");
     aboutPage.style.display = "block";
-}
+};
 
 // Function to hide the about page
-function hideAboutPage() {
-    var aboutPage = document.getElementById("aboutPage");
+const hideAboutPage = () => {
+    const aboutPage = document.getElementById("aboutPage");
     aboutPage.style.display = "none";
-}
+};
 
-async function geojsonFetch() {
+const geojsonFetch = async () => {
     // Fetch the GeoJSON data
-    let response = await fetch('assets/neighbor_data.json');
-    let crimeData = await response.json();
+    const response = await fetch('assets/neighbor_data.json');
+    const crimeData = await response.json();
 
-    map.on('load', function loadingData() {
+    map.on('load', () => {
         // Add layer
         // Add legend
         map.addSource('crimeData', {
@@ -75,7 +75,6 @@ async function geojsonFetch() {
         '1800 - 2399',
         '2400 - 2999',
         '3000 +'
-
     ];
     const colors = [
         '#FFEDA0',
@@ -110,9 +109,8 @@ async function geojsonFetch() {
         document.getElementById('text-description').innerHTML = crimeRate.length ?
             `<h3>${crimeRate[0].properties.L_HOOD}</h3><p><strong><em style="color: red;">${crimeRate[0].properties.CrimeCount}</em></strong>  Crime Reported</p>` :
             `<p>Hover over a neighborhood!</p>`;
-    });  
-
-}
+    });
+};
 
 geojsonFetch();
 
@@ -123,4 +121,3 @@ reset.addEventListener('click', event => {
         center: [-122.29, 47.62] // starting center
     });
 });
-
