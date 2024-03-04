@@ -11,6 +11,22 @@ let map = new mapboxgl.Map({
     center: [-122.29, 47.62] // starting center
 });
 
+function toggleAboutPage() {
+    var aboutPage = document.getElementById("aboutPage");
+    aboutPage.style.display === "none" ? aboutPage.style.display = "block" : aboutPage.style.display = "none";
+}
+
+function showAboutPage() {
+    var aboutPage = document.getElementById("aboutPage");
+    aboutPage.style.display = "block";
+}
+
+// Function to hide the about page
+function hideAboutPage() {
+    var aboutPage = document.getElementById("aboutPage");
+    aboutPage.style.display = "none";
+}
+
 async function geojsonFetch() {
     // Fetch the GeoJSON data
     let response = await fetch('assets/neighbor_data.json');
