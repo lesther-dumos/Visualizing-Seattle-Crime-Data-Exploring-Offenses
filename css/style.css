@@ -147,9 +147,9 @@ body {
 
 #legend-container {
   position: absolute;
-  top: 150px;
-  right: 25px;
-  background-color: rgb(241, 241, 241);
+  top: 180px;
+  left: 20px;
+  background-color: rgb(218, 218, 218);
   border: 1px solid #3f3d3d;
   padding: 10px;
   z-index: 10;
