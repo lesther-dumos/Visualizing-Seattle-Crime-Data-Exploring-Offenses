@@ -99,6 +99,9 @@
   z-index: 16;
 }
 
+.arrow:hover {
+  animation: none; /* Disable the regular animation on hover */
+}
 
 .arrowSliding {
   position: absolute;
@@ -106,7 +109,6 @@
           animation: slide 4s linear infinite;
   left: 300px;
   top: 450px;
-
 }
 
 .delay1 {
@@ -136,6 +138,9 @@
   100% { opacity: 0; transform: translateX(-15px); }
 }
 
+.arrow:hover {
+  cursor: pointer; /* Change cursor to hand on hover */
+}
 </style>
 
 <script>
