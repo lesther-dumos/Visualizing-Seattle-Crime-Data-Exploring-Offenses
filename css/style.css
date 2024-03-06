@@ -1,108 +1,114 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Titillium Web', serif;
-  }
-  
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-
- 
-  span {
-    position: relative;
-    float: right;
-    margin-left: 10px;
-    top: -30px; /* Adjust the value as needed */
-  }
-
-  #text-description {
-    position: relative;
-    top: 10px;
-  }
-
-  #desc {
-    text-align: left;
-    color: lightgray;
-    font-size: medium;
-    font-weight: bold;
-    margin-bottom: 0px;
-  }
-  
-
-  #mainTitle {
-    left: 20px;
-    top: 20px;
-    width: 400px;
-    height: 50px;
-    background: #201d1d;
-    position: absolute;
-    padding: 20px;
-    z-index: 3;
-    border-radius: 10px;
-    font-size: 40px;
-    color: white;
-    text-align: center;
-    font-family: 'Oswald', sans-serif;
-  }
-
-  #view_chlor {
-    color: white;
-    z-index: 20;
-    left: 100px;
-    top: 444px;
-    position: absolute;
-    font-family: 'Oswald', sans-serif;
-  }
-
-  #view_dot {
-    color: white;
-    z-index: 20;
-    left: 120px;
-    top: 444px;
-    position: absolute;
-    font-family: 'Oswald', sans-serif;
-  }
-
-  #info {
-    z-index: 2;
-    position: absolute;
-    width: 20%;
-    top: 0;
-    bottom: 50%;
-    right: 0%;
-    height: 95%;
-    background: #201d1d;
-    padding: 20px;
-    color: white;
-    border-radius: 10px;
-    overflow-y: auto;
-  }
-  
-  #info a {
-    color: lightgray;
-  }
-  
-  #info a:hover {
-    color: white;
-    opacity: 0.3;
-  }
-  
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Titillium Web', serif;
 }
 
-#title{
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#text-description {
+  position: relative;
+  top: 10px;
+}
+
+#desc {
+  text-align: left;
+  color: lightgray;
+  font-size: medium;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+
+#mainTitle {
+  left: 1%;
+  top: 2%;
+  width: auto;
+  max-width: 600px;
+  /* height: 50px; */
+  padding: 15px 20px;
+  background: #201d1d;
+  position: absolute;
+  /* padding: 20px; */
+  z-index: 2;
+  border-radius: 15px;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+#view_chlor {
+  color: white;
+  z-index: 20;
+  left: 100px;
+  top: 444px;
+  position: absolute;
+  font-family: 'Oswald', sans-serif;
+}
+
+#view_dot {
+  color: white;
+  z-index: 20;
+  left: 120px;
+  top: 444px;
+  position: absolute;
+  font-family: 'Oswald', sans-serif;
+}
+
+#info {
+  display: flex;
+  /* Enable flexbox */
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: stretch;
+  /* Stretch items to fill the container */
+  z-index: 1;
+  position: absolute;
+  width: 20%;
+  top: 1%;
+  bottom: 50%;
+  right: 1%;
+  height: 97%;
+  background: #201d1d;
+  padding: 25px;
+  color: white;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+#info a {
+  color: lightgray;
+}
+
+#info a:hover {
+  color: white;
+  opacity: 0.3;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#title {
   font-size: 25px;
+}
+
+#title span {
+  font-size: 14px;
+  float: right;
+  margin-right: 10px;
 }
 
 /**
@@ -142,7 +148,7 @@ body {
 
 .mapboxgl-canvas-container.mapboxgl-interactive,
 .mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
-    cursor: unset;
+  cursor: unset;
 }
 
 #legend-container {
@@ -157,14 +163,14 @@ body {
   overflow-y: auto;
   width: 85%;
   height: 20%;
-  color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   font-family: 'Oswald', sans-serif;
 }
 
-#legend-container :hover{
-color:rgb(0, 0, 0);
-font-weight: bold;
-background-color: #9b9898;
+#legend-container :hover {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  background-color: #9b9898;
 }
 
 .legend-item {
@@ -197,9 +203,12 @@ background-color: #9b9898;
 }
 
 .info-icon svg {
-  width: 100%; /* Adjust the size of the SVG icon as needed */
-  height: 100%; /* Adjust the size of the SVG icon as needed */
-  fill: black; /* Adjust the color of the SVG icon as needed */
+  width: 100%;
+  /* Adjust the size of the SVG icon as needed */
+  height: 100%;
+  /* Adjust the size of the SVG icon as needed */
+  fill: black;
+  /* Adjust the color of the SVG icon as needed */
 }
 
 /* .info-letter {
