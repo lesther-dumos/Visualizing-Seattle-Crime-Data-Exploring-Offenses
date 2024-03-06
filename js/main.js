@@ -97,6 +97,7 @@ const geojsonFetch = async () => {
 
         const value = document.createElement('span');
         value.innerHTML = `${layer}`;
+        value.classList.add('layer-span-class');
         item.appendChild(key);
         item.appendChild(value);
         legend.appendChild(item);
