@@ -13,7 +13,8 @@ body {
 
 #text-description {
   position: relative;
-  top: 10px;
+  /* top: 10px; */
+  margin-bottom: 10px;
 }
 
 #desc {
@@ -21,9 +22,8 @@ body {
   color: lightgray;
   font-size: medium;
   font-weight: bold;
-  margin-bottom: 0px;
+  margin-bottom: 2px;
 }
-
 
 #mainTitle {
   left: 1%;
@@ -43,20 +43,58 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
+#chart_div {
+    /* width: 50%;
+    height: 20%;
+    position: absolute;
+    top: 500px;
+    left: -30px;
+    color: white; */
+    padding: 10px;
+    z-index: 10;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 93%;
+    height: 35%;
+}
+
+#bar_graph {
+  /* width: 50%;
+  height: 20%;
+  position: absolute;
+  top: 475px;
+  left: 20px;
+  color: white; */
+  margin-top: 25px;
+  padding: 10px;
+  z-index: 10;
+  /* max-height: 400px; */
+  overflow-y: auto;
+  width: 93%;
+  height: 60%;
+}
+
 #view_chlor {
   color: white;
   z-index: 20;
-  left: 100px;
-  top: 444px;
+  left: 35%;
+  top: 7.3%;
   position: absolute;
   font-family: 'Oswald', sans-serif;
 }
 
 #view_dot {
-  color: white;
+  /* color: white;
   z-index: 20;
   left: 120px;
   top: 444px;
+  position: absolute;
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 10px; */
+  color: white;
+  z-index: 20;
+  left: 35%;
+  top: 7.3%;
   position: absolute;
   font-family: 'Oswald', sans-serif;
 }
@@ -103,6 +141,7 @@ body {
 
 #title {
   font-size: 25px;
+  margin-bottom: 15px;
 }
 
 #title span {
@@ -129,7 +168,7 @@ body {
   border-radius: 3px;
 }
 
-#legend {
+/* #legend {
   padding: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   line-height: 18px;
@@ -144,6 +183,43 @@ body {
   width: 20px;
   height: 10px;
   margin-right: 10px;
+} */
+
+/* the layout of the legend panel */
+#legend {
+    position: absolute;
+    bottom: 1%;
+    left: 0.5%;
+    width: auto;
+    background: #fff;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 1000;
+}
+
+/* each line for a break */
+.break {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+    margin: 3px 0; /* Adjust based on your preference */
+}
+
+.square {
+    width: 20px; /* Adjust based on your preference */
+    height: 25px; /* Adjust based on your preference */
+    display: inline-block;
+    margin-right: 5px; /* Space between square and text */
+}
+
+.square-label {
+    display: inline; /* Ensure label is in line with square */
+    margin-left: 5px; /* Adjust based on your preference */
+    vertical-align: middle; /* Align text with square */
+    position: relative; /* Adjust positioning as needed */
 }
 
 .mapboxgl-canvas-container.mapboxgl-interactive,
@@ -152,9 +228,9 @@ body {
 }
 
 #legend-container {
-  position: absolute;
+  /* position: absolute;
   top: 180px;
-  left: 20px;
+  left: 20px; */
   background-color: rgb(218, 218, 218);
   border: 1px solid #3f3d3d;
   padding: 10px;

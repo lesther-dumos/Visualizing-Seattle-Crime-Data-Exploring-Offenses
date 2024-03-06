@@ -27,13 +27,18 @@ function drawChart() {
         legend: { position: 'none' }, 
         'width': 340, // Set the width of the chart
         'height': 410,
+        'chartArea': {
+          'left': 50, // Adjust the space on the left side of the chart
+          'top': 40, // Adjust the space on the top side of the chart
+          'width': '90%', // Use a percentage to control the width of the chart area
+          'height': '80%' // Use a percentage to control the height of the chart area
+        },
         orientation: 'vertical',
         hAxis: {
             viewWindow: {
                 max: 6500 // Set the maximum value for the vertical axis
             }
         }
-        
     };
 
     var chart2 = new google.visualization.ColumnChart(document.getElementById('bar_graph'));

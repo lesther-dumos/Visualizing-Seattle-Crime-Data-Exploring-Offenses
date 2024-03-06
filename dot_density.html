@@ -16,7 +16,7 @@
     <!-- Load d3.js and c3.js -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/chart_pie.css">
+    <!-- <link rel="stylesheet" href="css/chart_pie.css"> -->
 
 
 </head>
@@ -34,6 +34,23 @@
           <span id="reset"><a href="#">reset</a></span>
         </div>
 
+        <div id="view_chlor"> View Chloropleth Map</div>
+
+        <div id="arrowAnim">
+          <a href="chloropleth.html" class="arrowSliding">
+            <div class="arrow"></div>
+          </a>
+          <div class="arrowSliding delay1">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay2">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay3">
+            <div class="arrow"></div>
+          </div>
+        </div>
+
         <div id="count" class="card">
             <h5 id="desc"> Crime: Offense Parent Group </h5>
             Select a crime!
@@ -42,25 +59,8 @@
         <div id="legend-container"></div>
 
         <div id='text-description'></div>
-        <div id="chart_div"></div>
-
-        <div id="view_chlor"> View Chloropleth Map</div>
-
-        <div id="arrowAnim">
-            <a href="chloropleth.html" class="arrowSliding">
-              <div class="arrow"></div>
-            </a>
-            <div class="arrowSliding delay1">
-              <div class="arrow"></div>
-            </div>
-            <div class="arrowSliding delay2">
-              <div class="arrow"></div>
-            </div>
-            <div class="arrowSliding delay3">
-              <div class="arrow"></div>
-            </div>
-          </div>
-        
+          <h5 id="desc"> Top 10 Crime Percentages </h5>
+          <div id="chart_div"></div>
     </div>
 
     <div class="info-icon" onclick="toggleAboutPage()">
@@ -102,8 +102,8 @@
   position: absolute;
   -webkit-animation: slide 4s linear infinite;
   animation: slide 4s linear infinite;
-  left: 10px; /* Adjusted to move from right to left */
-  top: 450px;
+  left: 15%; /* Adjusted to move from right to left */
+  top: 7.8%;
 }
 
 .delay1 {

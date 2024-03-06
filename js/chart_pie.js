@@ -49,9 +49,15 @@
    'legend': {
     'position': 'none',
   },
-  'width': 385, // Set the width of the chart
-  'height': 400, // Set the height of the chart
-  'colors': colors // Set custom colors for each row
+  'width': 350, // Set the width of the chart
+  'height': 300, // Set the height of the chart
+  'colors': colors, // Custom colors for the chart
+  'chartArea': {
+    'left': 10, // Adjust the space on the left side of the chart
+    'top': 10, // Adjust the space on the top side of the chart
+    'width': '100%', // Use a percentage to control the width of the chart area
+    'height': '100%' // Use a percentage to control the height of the chart area
+  }
 }
 
    // Instantiate and draw our chart, passing in some options.

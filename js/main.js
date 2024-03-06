@@ -68,15 +68,49 @@ const geojsonFetch = async () => {
         });
     });
 
-    const layers = [
+    // const layers = [
+    //     '0 - 599',
+    //     '600 - 1199',
+    //     '1200 - 1799',
+    //     '1800 - 2399',
+    //     '2400 - 2999',
+    //     '3000 +'
+    // ];
+    // const colors = [
+    //     '#FFEDA0',
+    //     '#FED976',
+    //     '#FEB24C',
+    //     '#FD8D3C',
+    //     '#FC4E2A',
+    //     '#E31A1C'
+    // ];
+
+    // const legend = document.getElementById('legend');
+    // legend.innerHTML = "<b>Reported Crime<br></b><br><br>";
+
+    // layers.forEach((layer, i) => {
+    //     const color = colors[i];
+    //     const item = document.createElement('div');
+    //     const key = document.createElement('span');
+    //     key.className = 'legend-key';
+    //     key.style.backgroundColor = color;
+
+    //     const value = document.createElement('span');
+    //     value.innerHTML = `${layer}`;
+    //     value.classList.add('layer-span-class');
+    //     item.appendChild(key);
+    //     item.appendChild(value);
+    //     legend.appendChild(item);
+    // });
+    const grades = [
         '0 - 599',
         '600 - 1199',
         '1200 - 1799',
         '1800 - 2399',
         '2400 - 2999',
         '3000 +'
-    ];
-    const colors = [
+    ],
+    colors = [
         '#FFEDA0',
         '#FED976',
         '#FEB24C',
@@ -86,22 +120,23 @@ const geojsonFetch = async () => {
     ];
 
     const legend = document.getElementById('legend');
-    legend.innerHTML = "<b>Reported Crime<br></b><br><br>";
+    let labels = ['<strong>No. of Crime Reported</strong>'], vbreak;
 
-    layers.forEach((layer, i) => {
-        const color = colors[i];
-        const item = document.createElement('div');
-        const key = document.createElement('span');
-        key.className = 'legend-key';
-        key.style.backgroundColor = color;
+    for (var i = 0; i < grades.length; i++) {
+        vbreak = grades[i];
+        square_size = 10
+        labels.push(
+            '<p class="break"><i class="square" style="background:' + colors[i] + '; width: ' + square_size +
+            'px; height: ' +
+            square_size + 'px; "></i> <span class="square-label" style="top: ' + square_size / 2 + 'px;">' + vbreak +
+            '</span></p>');
+    }
 
-        const value = document.createElement('span');
-        value.innerHTML = `${layer}`;
-        value.classList.add('layer-span-class');
-        item.appendChild(key);
-        item.appendChild(value);
-        legend.appendChild(item);
-    });
+    const source =
+        '<p style="text-align: right; font-size:10pt">Source: <a href="https://data.seattle.gov/Public-Safety/SPD-Crime-Data-2008-Present/tazs-3rd5/about_data">Seattle Open Data</a></p>';
+
+    // join all the labels and the source to create the legend content.
+    legend.innerHTML = labels.join('') + source;
 
     map.on('mousemove', ({point}) => {
         const crimeRate = map.queryRenderedFeatures(point, {
