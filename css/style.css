@@ -14,7 +14,7 @@ body {
 #text-description {
   position: relative;
   /* top: 10px; */
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 #desc {
@@ -65,13 +65,13 @@ body {
   top: 475px;
   left: 20px;
   color: white; */
-  margin-top: 25px;
+  margin-top: 5px;
   padding: 10px;
   z-index: 10;
   /* max-height: 400px; */
   overflow-y: auto;
   width: 93%;
-  height: 60%;
+  height: 350%;
 }
 
 #view_chlor {
@@ -110,7 +110,7 @@ body {
   position: absolute;
   width: 20%;
   top: 1%;
-  bottom: 50%;
+  bottom: 5%;
   right: 1%;
   height: 97%;
   background: #201d1d;
@@ -318,4 +318,13 @@ body {
   cursor: pointer;
   color: #333;
   font-size: 30px;
+}
+
+#footer {
+  margin-top:10px;
+  /* margin-bottom:10px; */
+  margin-right: 10px;
+  font-size: 15px;
+  line-height: 150%;
+  color: lightgray;
 }

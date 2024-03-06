@@ -26,7 +26,7 @@ function drawChart() {
         title: 'Crime Reported and Month',
         legend: { position: 'none' }, 
         'width': 340, // Set the width of the chart
-        'height': 410,
+        'height': 330,
         'chartArea': {
           'left': 50, // Adjust the space on the left side of the chart
           'top': 40, // Adjust the space on the top side of the chart
