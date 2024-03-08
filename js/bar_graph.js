@@ -23,7 +23,7 @@ function drawChart() {
 
     // Create and draw the chart
     var options2 = {
-        title: 'Crime Reported and Month',
+        title: 'Number of Crime Reported and Month (2023)',
         legend: { position: 'none' }, 
         'width': 340, // Set the width of the chart
         'height': 330,
