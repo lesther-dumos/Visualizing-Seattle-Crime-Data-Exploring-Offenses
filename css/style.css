@@ -12,8 +12,8 @@ body {
 }
 
 #text-description {
-  position: relative;
-  /* top: 10px; */
+  position: absolute;
+  bottom: 170px
   /* margin-bottom: 10px; */
 }
 

@@ -375,16 +375,14 @@
 
   geojsonFetch();
 
-  function handleArrowClick() {
-    // Replace 'new-page.html' with the path to your new HTML page
+function handleArrowClick() {
     window.location.href = 'index.html';
   }
 
   document.getElementById('arrowAnim').addEventListener('click', handleArrowClick);
 
-  const reset = document.getElementById('reset');
-  reset.addEventListener('click', event => {
-    // This event will trigger a page refresh
+const reset = document.getElementById('reset');
+reset.addEventListener('click', event => {
     location.reload();
   });
 
