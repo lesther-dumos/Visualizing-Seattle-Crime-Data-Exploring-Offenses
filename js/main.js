@@ -144,7 +144,7 @@ const geojsonFetch = async () => {
         });
         document.getElementById('text-description').innerHTML = crimeRate.length ?
             `<h3>${crimeRate[0].properties.L_HOOD}</h3><p><strong><em style="color: red;">${crimeRate[0].properties.CrimeCount}</em></strong>  Crime Reported</p>` :
-            `<p>Hover over a neighborhood!</p>`;
+            `<h3>Hover over a neighborhood!</h3>`;
     });
 };
 

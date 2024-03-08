@@ -2,374 +2,403 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Seattle Crime</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <!-- include google web fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Oswald" rel="stylesheet">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="js/chart.js"></script>
-    <!-- include icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
-    <!-- Load d3.js and c3.js -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- <link rel="stylesheet" href="css/chart_pie.css"> -->
+  <meta charset="utf-8">
+  <title>Seattle Crime</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <!-- include google web fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Oswald" rel="stylesheet">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="js/chart.js"></script>
+  <!-- include icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- <link rel="stylesheet" href="css/chart_pie.css"> -->
 
 
 </head>
 
 <body>
-    <div id="map"></div>
-    <div id="mainTitle"> Seattle Crime in 2023 </div>
-    <!-- sidebar -->
-    <div id="info">
-        <div id="title">
-          Dashboard
-          <span><a href="https://twitter.com/UW" target="_blank"><i class="bi bi-twitter"></i></a></span>
-          <span><a href="https://github.com/lesther-dumos/Smart-Dashboard-Crime/tree/main" target="_blank"><i
-                class="bi bi-github"></i></a></span>
-          <span id="reset"><a href="#">reset</a></span>
-        </div>
-
-        <div id="view_chlor"> View Chloropleth Map</div>
-
-        <div id="arrowAnim">
-          <a href="chloropleth.html" class="arrowSliding">
-            <div class="arrow"></div>
-          </a>
-          <div class="arrowSliding delay1">
-            <div class="arrow"></div>
-          </div>
-          <div class="arrowSliding delay2">
-            <div class="arrow"></div>
-          </div>
-          <div class="arrowSliding delay3">
-            <div class="arrow"></div>
-          </div>
-        </div>
-
-        <div id="count" class="card">
-            <h5 id="desc"> Crime: Offense Parent Group </h5>
-            Select a crime!
-        </div>
-
-        <div id="legend-container"></div>
-
-        <div id='text-description'></div>
-        <h5 id="desc"> Top 10 Crime Percentages </h5>
-        <div id="chart_div"></div>
+  <div id="map"></div>
+  <div id="mainTitle"> Seattle Crime in 2023 </div>
+  <!-- sidebar -->
+  <div id="info">
+    <div id="title">
+      Dashboard
+      <span><a href="https://twitter.com/UW" target="_blank"><i class="bi bi-twitter"></i></a></span>
+      <span><a href="https://github.com/lesther-dumos/Smart-Dashboard-Crime/tree/main" target="_blank"><i
+            class="bi bi-github"></i></a></span>
+      <span id="reset"><a href="#">reset</a></span>
     </div>
 
-    <div class="info-icon" onclick="toggleAboutPage()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-      </svg>
+    <div id="view_chlor"> View Chloropleth Map</div>
+
+    <div id="arrowAnim">
+      <a href="chloropleth.html" class="arrowSliding">
+        <div class="arrow"></div>
+      </a>
+      <div class="arrowSliding delay1">
+        <div class="arrow"></div>
+      </div>
+      <div class="arrowSliding delay2">
+        <div class="arrow"></div>
+      </div>
+      <div class="arrowSliding delay3">
+        <div class="arrow"></div>
+      </div>
     </div>
 
-    <div id="aboutPage" class="about-page">
-      <div class="close-button" onclick="hideAboutPage()">&times;</div>
-      <h2>Project overview</h2>
-      <p>This smart dashboard aims to inform users of crime trends in Seattle using data from the Seattle Police Department. 
-        It includes a choropleth map of the number of crime cases across neighborhoods, and a dot density map that shows where certain types of crimes occured. </p>
-      <h2>Data Source and Methodology</h2>
-      <p>This dataset comes from the Seattle Police Department. 
-        The dataset comes from the Seattle Police Department and contains information on different types of offenses, 
-        including address, longitude and latitude, date, and time of the offense. 
-        We refined this data to include only the top 20 types of crimes based on its number of occurrences.
-        Then we spatially joined the data to a choropleth and a dot density using their coordinates.
-        We also created a bar chart to show the number of cases from each month, and a pie chart for the top 10 crime's percentages. 
-      </p>
-      <h2>Key Insights</h2>
-      <p>The choropleth map reveals that downtown/Capitol Hill area is a hotspot for criminal activity. 
-        The U-district is also one of the top neighborhoods for the number of crime cases that were reported. 
-        The dot density map shows that theft offences make up almost half of the offences in Seattle, outnumbering assault offenses. 
-        Larceny occurs widely across the city, comprising approximately one-third of all reported crimes. 
-        This finding underscores the need for targeted interventions to address theft-related crimes in these areas.
-        Researchers, policy makers and the law enforcements can use this dashboard to allocate resources effectively and 
-        implement measures to reduce crime rates in the city.</p>
-      <h2>Acknowledgments</h2>
-      <p>Thank you Professor Bo Zhao and TA Liz Peng for their support and guidance throughout the project.
-        This project was made by Lesther, Chris, Rino, Priscilla, and Luu for GEOG458 Advanced Digital Geography at University of Washington.
-      </p>
+    <div id="count" class="card">
+      <h5 id="desc"> Crime: Offense Parent Group </h5>
+      Select a crime!
     </div>
 
-    <script src="js/chart_pie.js"></script>
+    <div id="legend-container"></div>
+
+    <div id='text-description'></div>
+    <h5 id="desc"> Top 10 Crime Percentages </h5>
+    <div id="chart_div"></div>
+  </div>
+
+  <div class="info-icon" onclick="toggleAboutPage()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+    </svg>
+  </div>
+
+  <div id="aboutPage" class="about-page">
+    <div class="close-button" onclick="hideAboutPage()">&times;</div>
+    <h2>Project overview</h2>
+    <p>This project inform users of crime trends in Seattle. </p>
+    <h2>Data Source and Methodology</h2>
+    <p>This dataset comes from the Seattle Police Department.
+      The dataset contains information regarding different types of offenses, including the address,
+      longitude and latitude, as well as the date and time of the offense. The offense ID keeps track
+      of multiple offenses with the same report.</p>
+    <h2>Key Insights</h2>
+    <p>Text</p>
+    <h2>Acknowledgments</h2>
+    <p>To Professor and TA</p>
+  </div>
+
+  <script src="js/chart_pie.js"></script>
 
 </body>
 
 <style>
- .arrow {
-  width: 5px;
-  height: 5px;
-  border: 5px solid;
-  border-color: rgb(245, 245, 245) transparent transparent rgb(146, 141, 141);
-  transform: rotate(-45deg);
-  z-index: 17;
-}
+  .arrow {
+    width: 5px;
+    height: 5px;
+    border: 5px solid;
+    border-color: rgb(245, 245, 245) transparent transparent rgb(146, 141, 141);
+    transform: rotate(-45deg);
+    z-index: 17;
+  }
 
-.arrowSliding {
-  position: absolute;
-  -webkit-animation: slide 4s linear infinite;
-  animation: slide 4s linear infinite;
-  left: 15%; /* Adjusted to move from right to left */
-  top: 7.8%;
-}
+  .arrowSliding {
+    position: absolute;
+    -webkit-animation: slide 4s linear infinite;
+    animation: slide 4s linear infinite;
+    left: 15%;
+    /* Adjusted to move from right to left */
+    top: 7.8%;
+  }
 
-.delay1 {
-  -webkit-animation-delay: .1s;
-  animation-delay: .1s;
-}
-.delay2 {
-  -webkit-animation-delay: .2s;
-  animation-delay: .2s;
-}
-.delay3 {
-  -webkit-animation-delay: .3s;
-  animation-delay: .3s;
-}
+  .delay1 {
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s;
+  }
 
-.arrow:hover {
-  cursor: pointer; /* Change cursor to hand on hover */
-}
+  .delay2 {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+  }
 
-.about-page {
-  display: none;
-  position: fixed;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(234, 234, 234);
-  color: #020202;
-  padding: 150px;
-  box-sizing: border-box;
-  z-index: 2;
-}
+  .delay3 {
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+  }
 
-.close-button {
-  position: absolute;
-  top: 120px;
-  left: 22px;
-  cursor: pointer;
-  color: #333;
-  font-size: 30px;
-}
+  .arrow:hover {
+    cursor: pointer;
+    /* Change cursor to hand on hover */
+  }
 
-@-webkit-keyframes slide {
-  0% { opacity: 0; transform: translateX(15vw); } /* Adjusted to start from right */
-  20% { opacity: 1; transform: translateX(9vw); }
-  80% { opacity: 1; transform: translateX(-9vw); }
-  100% { opacity: 0; transform: translateX(-15vw); } /* Adjusted to end at left */
-}
+  .about-page {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(234, 234, 234);
+    color: #020202;
+    padding: 150px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
 
-@keyframes slide {
-  0% { opacity: 0; transform: translateX(4vw); } /* Adjusted to start from right */
-  20% { opacity: 1; transform: translateX(15px); }
-  80% { opacity: 1; transform: translateX(15px); }
-  100% { opacity: 0; transform: translateX(15px); }
-}   
+  .close-button {
+    position: absolute;
+    top: 120px;
+    left: 22px;
+    cursor: pointer;
+    color: #333;
+    font-size: 30px;
+  }
+
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateX(15vw);
+    }
+
+    /* Adjusted to start from right */
+    20% {
+      opacity: 1;
+      transform: translateX(9vw);
+    }
+
+    80% {
+      opacity: 1;
+      transform: translateX(-9vw);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(-15vw);
+    }
+
+    /* Adjusted to end at left */
+  }
+
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateX(4vw);
+    }
+
+    /* Adjusted to start from right */
+    20% {
+      opacity: 1;
+      transform: translateX(15px);
+    }
+
+    80% {
+      opacity: 1;
+      transform: translateX(15px);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(15px);
+    }
+  }
 </style>
 
 <script>
-
-// assign the access token
-mapboxgl.accessToken =
+  // assign the access token
+  mapboxgl.accessToken =
     'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
 
-// declare the map object
-let map = new mapboxgl.Map({
+  // declare the map object
+  let map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v9',
     zoom: 10.6, // starting zoom
     minZoom: 1,
     center: [-122.29, 47.62] // starting center
-});
+  });
 
-async function geojsonFetch() {
+  async function geojsonFetch() {
     let response;
     response = await fetch('assets/seattleCrime2023.geojson');
     crime = await response.json();
 
     map.on('load', () => {
-        // Add GeoJSON data as a source
-        map.addSource('crime', {
-            type: 'geojson',
-            data: crime
-        });
+      // Add GeoJSON data as a source
+      map.addSource('crime', {
+        type: 'geojson',
+        data: crime
+      });
 
-        // Circle Layer
-        map.addLayer({
-            id: 'crime-circles',
-            type: 'circle',
-            source: 'crime',
-            paint: {
-                'circle-color': [
-                    'match',
-                    ['get', 'Offense Parent Group'],
-                    'COUNTERFEITING/FORGERY', '#FF0000',  // Red for Counterfeiting/Forgery
-                    'LARCENY-THEFT', '#00FF00',  // Green for Larceny/Theft
-                    'ASSAULT OFFENSES', '#FFA500',  // Orange for Assault Offenses
-                    'DESTRUCTION/DAMAGE/VANDALISM OF PROPERTY', '#ff3311',  // Custom color for Destruction/Damage/Vandalism of Property
-                    'ROBBERY', '#800080',  // Purple for Robbery
-                    'PORNOGRAPHY/OBSCENE MATERIAL', '#8B4513',  // Saddle Brown for Pornography/Obscene Material
-                    'BURGLARY/BREAKING&ENTERING', '#0000FF',  // Blue for Burglary/Breaking&Entering
-                    'DRUG/NARCOTIC OFFENSES', '#008080',  // Teal for Drug/Narcotic Offenses
-                    'STOLEN PROPERTY OFFENSES', '#663399',  // Rebecca Purple for Stolen Property Offenses
-                    'TRESPASS OF REAL PROPERTY', '#8A2BE2',  // Blue Violet for Trespass of Real Property
-                    'ARSON', '#FF6347',  // Tomato for Arson
-                    'MOTOR VEHICLE THEFT', '#FFFF00',  // Yellow for Motor Vehicle Theft
-                    'FRAUD OFFENSES', '#00CED1',  // Dark Turquoise for Fraud Offenses
-                    'DRIVING UNDER THE INFLUENCE', '#4B0082',  // Indigo for Driving Under the Influence
-                    'EXTORTION/BLACKMAIL', '#FFD700',  // Gold for Extortion/Blackmail
-                    'KIDNAPPING/ABDUCTION', '#9400D3',  // Dark Violet for Kidnapping/Abduction
-                    'WEAPON LAW VIOLATIONS', '#ADFF2F',  // Green Yellow for Weapon Law Violations
-                    'PEEPING TOM', '#2F4F4F',  // Dark Slate Gray for Peeping Tom
-                    'FAMILY OFFENSES, NONVIOLENT', '#00FA9A',  // Medium Spring Green for Family Offenses, Nonviolent
-                    'EMBEZZLEMENT', '#FF4500',  // Orange Red for Embezzlement
-                    'ANIMAL CRUELTY', '#8B0000',  // Dark Red for Animal Cruelty
-                    'BAD CHECKS', '#556B2F',  // Dark Olive Green for Bad Checks
-                    'HOMICIDE OFFENSES', '#B22222',  // Fire Brick for Homicide Offenses
-                    'HUMAN TRAFFICKING', '#D2691E',  // Chocolate for Human Trafficking
-                    'PROSTITUTION OFFENSES', '#FF1493',  // Deep Pink for Prostitution Offenses
-                    'BRIBERY', '#6A5ACD',  // Slate Blue for Bribery
-                    'SEX OFFENSES, CONSENSUAL', '#9370DB',  // Medium Purple for Sex Offenses, Consensual
-                    'LIQUOR LAW VIOLATIONS', '#B0C4DE',  // Light Steel Blue for Liquor Law Violations
-                    'CURFEW/LOITERING/VAGRANCY VIOLATIONS', '#20B2AA',  // Light Sea Green for Curfew/Loitering/Vagrancy Violations
-                    'GAMBLING OFFENSES', '#FF8C00',  // Dark Orange for Gambling Offenses
-                    // Add more cases for other offense groups and their corresponding colors
-                    'rgba(0, 0, 0, 0.1)'  // Default color for unknown groups
-                ],
-                'circle-radius': 5,
-                'circle-opacity': .3
-            }
-        }, 'waterway-label');
+      // Circle Layer
+      map.addLayer({
+        id: 'crime-circles',
+        type: 'circle',
+        source: 'crime',
+        paint: {
+          'circle-color': [
+            'match',
+            ['get', 'Offense Parent Group'],
+            'COUNTERFEITING/FORGERY', '#FF0000', // Red for Counterfeiting/Forgery
+            'LARCENY-THEFT', '#00FF00', // Green for Larceny/Theft
+            'ASSAULT OFFENSES', '#FFA500', // Orange for Assault Offenses
+            'DESTRUCTION/DAMAGE/VANDALISM OF PROPERTY',
+            '#ff3311', // Custom color for Destruction/Damage/Vandalism of Property
+            'ROBBERY', '#800080', // Purple for Robbery
+            'PORNOGRAPHY/OBSCENE MATERIAL', '#8B4513', // Saddle Brown for Pornography/Obscene Material
+            'BURGLARY/BREAKING&ENTERING', '#0000FF', // Blue for Burglary/Breaking&Entering
+            'DRUG/NARCOTIC OFFENSES', '#008080', // Teal for Drug/Narcotic Offenses
+            'STOLEN PROPERTY OFFENSES', '#663399', // Rebecca Purple for Stolen Property Offenses
+            'TRESPASS OF REAL PROPERTY', '#8A2BE2', // Blue Violet for Trespass of Real Property
+            'ARSON', '#FF6347', // Tomato for Arson
+            'MOTOR VEHICLE THEFT', '#FFFF00', // Yellow for Motor Vehicle Theft
+            'FRAUD OFFENSES', '#00CED1', // Dark Turquoise for Fraud Offenses
+            'DRIVING UNDER THE INFLUENCE', '#4B0082', // Indigo for Driving Under the Influence
+            'EXTORTION/BLACKMAIL', '#FFD700', // Gold for Extortion/Blackmail
+            'KIDNAPPING/ABDUCTION', '#9400D3', // Dark Violet for Kidnapping/Abduction
+            'WEAPON LAW VIOLATIONS', '#ADFF2F', // Green Yellow for Weapon Law Violations
+            'PEEPING TOM', '#2F4F4F', // Dark Slate Gray for Peeping Tom
+            'FAMILY OFFENSES, NONVIOLENT', '#00FA9A', // Medium Spring Green for Family Offenses, Nonviolent
+            'EMBEZZLEMENT', '#FF4500', // Orange Red for Embezzlement
+            'ANIMAL CRUELTY', '#8B0000', // Dark Red for Animal Cruelty
+            'BAD CHECKS', '#556B2F', // Dark Olive Green for Bad Checks
+            'HOMICIDE OFFENSES', '#B22222', // Fire Brick for Homicide Offenses
+            'HUMAN TRAFFICKING', '#D2691E', // Chocolate for Human Trafficking
+            'PROSTITUTION OFFENSES', '#FF1493', // Deep Pink for Prostitution Offenses
+            'BRIBERY', '#6A5ACD', // Slate Blue for Bribery
+            'SEX OFFENSES, CONSENSUAL', '#9370DB', // Medium Purple for Sex Offenses, Consensual
+            'LIQUOR LAW VIOLATIONS', '#B0C4DE', // Light Steel Blue for Liquor Law Violations
+            'CURFEW/LOITERING/VAGRANCY VIOLATIONS',
+            '#20B2AA', // Light Sea Green for Curfew/Loitering/Vagrancy Violations
+            'GAMBLING OFFENSES', '#FF8C00', // Dark Orange for Gambling Offenses
+            // Add more cases for other offense groups and their corresponding colors
+            'rgba(0, 0, 0, 0.1)' // Default color for unknown groups
+          ],
+          'circle-radius': 5,
+          'circle-opacity': .3
+        }
+      }, 'waterway-label');
 
-             // Create legend
-        const legendContainer = document.getElementById('legend-container');
+      // Create legend
+      const legendContainer = document.getElementById('legend-container');
 
-        // Function to toggle layer visibility
-        function toggleLayerVisibility(layerName) {
-            const visibility = map.getLayoutProperty('crime-circles', 'visibility');
-            const visibleLayers = visibility === 'visible' ? map.getStyle().layers : [];
+      // Function to toggle layer visibility
+      function toggleLayerVisibility(layerName) {
+        const visibility = map.getLayoutProperty('crime-circles', 'visibility');
+        const visibleLayers = visibility === 'visible' ? map.getStyle().layers : [];
 
-            if (visibleLayers.includes('crime-circles')) {
-                map.setLayoutProperty('crime-circles', 'visibility', 'none');
-            }
-
-            map.setLayoutProperty('crime-circles', 'visibility', 'visible');
-            map.setFilter('crime-circles', ['==', 'Offense Parent Group', layerName]);
+        if (visibleLayers.includes('crime-circles')) {
+          map.setLayoutProperty('crime-circles', 'visibility', 'none');
         }
 
-        // Append legend items to legend container with interactivity
-        crime.features.forEach(feature => {
-            const crimeType = feature.properties['Offense Parent Group'];
+        map.setLayoutProperty('crime-circles', 'visibility', 'visible');
+        map.setFilter('crime-circles', ['==', 'Offense Parent Group', layerName]);
+      }
 
-            if (legendContainer.querySelector(`[data-type="${crimeType}"]`) === null) {
-                const legendItem = document.createElement('div');
-                legendItem.className = 'legend-item';
-                legendItem.setAttribute('data-type', crimeType);
+      // Append legend items to legend container with interactivity
+      crime.features.forEach(feature => {
+        const crimeType = feature.properties['Offense Parent Group'];
 
-                const legendColor = document.createElement('div');
-                legendColor.className = 'legend-color';
-                legendColor.style.backgroundColor = getColorForCrimeType(crimeType);
+        if (legendContainer.querySelector(`[data-type="${crimeType}"]`) === null) {
+          const legendItem = document.createElement('div');
+          legendItem.className = 'legend-item';
+          legendItem.setAttribute('data-type', crimeType);
 
-                const legendLabel = document.createElement('div');
-                legendLabel.className = 'legend-label';
-                legendLabel.textContent = crimeType;
+          const legendColor = document.createElement('div');
+          legendColor.className = 'legend-color';
+          legendColor.style.backgroundColor = getColorForCrimeType(crimeType);
 
-                legendItem.appendChild(legendColor);
-                legendItem.appendChild(legendLabel);
+          const legendLabel = document.createElement('div');
+          legendLabel.className = 'legend-label';
+          legendLabel.textContent = crimeType;
 
-                // Add click event to toggle layer visibility
-                legendItem.addEventListener('click', () => {
-                    toggleLayerVisibility(crimeType);
-                });
+          legendItem.appendChild(legendColor);
+          legendItem.appendChild(legendLabel);
 
-                // Add hover event to update styling
-                legendItem.addEventListener('mouseover', () => {
-                    legendItem.style.backgroundColor = '#9b9898';
-                    legendItem.style.fontWeight = 'bold';
-                });
+          // Add click event to toggle layer visibility
+          legendItem.addEventListener('click', () => {
+            toggleLayerVisibility(crimeType);
+          });
 
-                legendItem.addEventListener('mouseout', () => {
-                    legendItem.style.backgroundColor = '';
-                    legendItem.style.fontWeight = '';
-                });
+          // Add hover event to update styling
+          legendItem.addEventListener('mouseover', () => {
+            legendItem.style.backgroundColor = '#9b9898';
+            legendItem.style.fontWeight = 'bold';
+          });
 
-                legendContainer.appendChild(legendItem);
-            }
-        });
+          legendItem.addEventListener('mouseout', () => {
+            legendItem.style.backgroundColor = '';
+            legendItem.style.fontWeight = '';
+          });
+
+          legendContainer.appendChild(legendItem);
+        }
+      });
     });
-}
+  }
 
-function getColorForCrimeType(crimeType) {
+  function getColorForCrimeType(crimeType) {
     // Define color mapping based on crime type
     const colorMapping = {
-        'COUNTERFEITING/FORGERY': '#FF0000',
-        'LARCENY-THEFT': '#00FF00',
-        'ASSAULT OFFENSES': '#FFA500',
-        'DESTRUCTION/DAMAGE/VANDALISM OF PROPERTY': '#ff3311',
-        'ROBBERY': '#800080',
-        'PORNOGRAPHY/OBSCENE MATERIAL': '#8B4513',
-        'BURGLARY/BREAKING&ENTERING': '#0000FF',
-        'DRUG/NARCOTIC OFFENSES': '#008080',
-        'STOLEN PROPERTY OFFENSES': '#663399',
-        'TRESPASS OF REAL PROPERTY': '#8A2BE2',
-        'ARSON': '#FF6347',
-        'MOTOR VEHICLE THEFT': '#FFFF00',
-        'FRAUD OFFENSES': '#00CED1',
-        'DRIVING UNDER THE INFLUENCE': '#4B0082',
-        'EXTORTION/BLACKMAIL': '#FFD700',
-        'KIDNAPPING/ABDUCTION': '#9400D3',
-        'WEAPON LAW VIOLATIONS': '#ADFF2F',
-        'PEEPING TOM': '#2F4F4F',
-        'FAMILY OFFENSES, NONVIOLENT': '#00FA9A',
-        'EMBEZZLEMENT': '#FF4500',
-        'ANIMAL CRUELTY': '#8B0000',
-        'BAD CHECKS': '#556B2F',
-        'HOMICIDE OFFENSES': '#B22222',
-        'HUMAN TRAFFICKING': '#D2691E',
-        'PROSTITUTION OFFENSES': '#FF1493',
-        'BRIBERY': '#6A5ACD',
-        'SEX OFFENSES, CONSENSUAL': '#9370DB',
-        'LIQUOR LAW VIOLATIONS': '#B0C4DE',
-        'CURFEW/LOITERING/VAGRANCY VIOLATIONS': '#20B2AA',
-        'GAMBLING OFFENSES': '#FF8C00',
-        'rgba(0, 0, 0, 0.1)': '#CCCCCC'
+      'COUNTERFEITING/FORGERY': '#FF0000',
+      'LARCENY-THEFT': '#00FF00',
+      'ASSAULT OFFENSES': '#FFA500',
+      'DESTRUCTION/DAMAGE/VANDALISM OF PROPERTY': '#ff3311',
+      'ROBBERY': '#800080',
+      'PORNOGRAPHY/OBSCENE MATERIAL': '#8B4513',
+      'BURGLARY/BREAKING&ENTERING': '#0000FF',
+      'DRUG/NARCOTIC OFFENSES': '#008080',
+      'STOLEN PROPERTY OFFENSES': '#663399',
+      'TRESPASS OF REAL PROPERTY': '#8A2BE2',
+      'ARSON': '#FF6347',
+      'MOTOR VEHICLE THEFT': '#FFFF00',
+      'FRAUD OFFENSES': '#00CED1',
+      'DRIVING UNDER THE INFLUENCE': '#4B0082',
+      'EXTORTION/BLACKMAIL': '#FFD700',
+      'KIDNAPPING/ABDUCTION': '#9400D3',
+      'WEAPON LAW VIOLATIONS': '#ADFF2F',
+      'PEEPING TOM': '#2F4F4F',
+      'FAMILY OFFENSES, NONVIOLENT': '#00FA9A',
+      'EMBEZZLEMENT': '#FF4500',
+      'ANIMAL CRUELTY': '#8B0000',
+      'BAD CHECKS': '#556B2F',
+      'HOMICIDE OFFENSES': '#B22222',
+      'HUMAN TRAFFICKING': '#D2691E',
+      'PROSTITUTION OFFENSES': '#FF1493',
+      'BRIBERY': '#6A5ACD',
+      'SEX OFFENSES, CONSENSUAL': '#9370DB',
+      'LIQUOR LAW VIOLATIONS': '#B0C4DE',
+      'CURFEW/LOITERING/VAGRANCY VIOLATIONS': '#20B2AA',
+      'GAMBLING OFFENSES': '#FF8C00',
+      'rgba(0, 0, 0, 0.1)': '#CCCCCC'
     };
 
     return colorMapping[crimeType] || '#CCCCCC';
-}
+  }
 
-geojsonFetch();
+  geojsonFetch();
 
 function handleArrowClick() {
     window.location.href = 'index.html';
   }
-  
+
   document.getElementById('arrowAnim').addEventListener('click', handleArrowClick);
 
 const reset = document.getElementById('reset');
 reset.addEventListener('click', event => {
     location.reload();
-});
+  });
 
-const toggleAboutPage = () => {
+  const toggleAboutPage = () => {
     const aboutPage = document.getElementById("aboutPage");
     aboutPage.style.display === "none" ? aboutPage.style.display = "block" : aboutPage.style.display = "none";
-};
+  };
 
-const showAboutPage = () => {
+  const showAboutPage = () => {
     const aboutPage = document.getElementById("aboutPage");
     aboutPage.style.display = "block";
-};
+  };
 
-// Function to hide the about page
-const hideAboutPage = () => {
+  // Function to hide the about page
+  const hideAboutPage = () => {
     const aboutPage = document.getElementById("aboutPage");
     aboutPage.style.display = "none";
-};
+  };
 </script>
