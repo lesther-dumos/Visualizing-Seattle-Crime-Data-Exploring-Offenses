@@ -288,17 +288,9 @@ body {
 
 .info-icon svg {
   width: 100%;
-  /* Adjust the size of the SVG icon as needed */
   height: 100%;
-  /* Adjust the size of the SVG icon as needed */
   fill: black;
-  /* Adjust the color of the SVG icon as needed */
 }
-
-/* .info-letter {
-  font-size: 20px;
-  color: white;
-} */
 
 .about-page {
   display: none;
@@ -312,15 +304,16 @@ body {
   padding: 150px;
   box-sizing: border-box;
   z-index: 2;
+  overflow: auto;
 }
 
 .close-button {
   position: absolute;
   top: 120px;
-  left: 22px;
+  left: 30px;
   cursor: pointer;
   color: #333;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 #footer {
