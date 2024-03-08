@@ -12,9 +12,9 @@ body {
 }
 
 #text-description {
-  position: absolute;
-  bottom: 170px
-  /* margin-bottom: 10px; */
+  /* position: absolute; */
+  /* bottom: 50% */
+  margin-bottom: 2px;
 }
 
 #desc {
@@ -71,7 +71,7 @@ body {
   /* max-height: 400px; */
   overflow-y: auto;
   width: 93%;
-  height: 350%;
+  height: 250%;
 }
 
 #view_chlor {
